@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <button type="button" class="close" aria-label="Close" (click)="modalService.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title">{{node.name}}</h4>
+</div>
+<div class="modal-body container">
+  <div class="col-xs-6">
+    <app-metric [used]="node.cpu.used" [available]="node.cpu.available" title="CPI">
+    </app-metric>
+  </div>
+  <div class="col-xs-6">
+    <app-metric [used]="node.mem.used" [available]="node.mem.available" title="MEM">
+    </app-metric>
+  </div>
+</div>
