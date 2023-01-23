@@ -1,6 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
 import { AccountService } from './account.service';
 import { ConfigService } from './config.service';
 import { Stock } from './stocks.model';
