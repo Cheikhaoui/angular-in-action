@@ -17,9 +17,15 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   constructor(
     private chatBotService: ChatBotService,
-    private userService: UserService) { }
+    private userService: UserService,private route:ActivatedRoute) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe(p=>{
+      this.messages = []
+      this.user = this.userService.getUser();
+      this.guest = p["username"]
+    })
+  }
 
   ngAfterViewChecked() {
     this.scrollToBottom();

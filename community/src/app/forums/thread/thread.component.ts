@@ -12,7 +12,12 @@ export class ThreadComponent implements OnInit {
   forum: Forum;
   thread: Thread;
 
-  constructor(private forumsService: ForumsService) { }
+  constructor(private forumsService: ForumsService , private route : ActivatedRoute) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    let forum = this.route.snapshot.parent.params['forum_alias'];
+    this.route.params.subscribe(p=>{
+      this.thread = this.forumsService.thread(forum,p["thread_alias"])
+    })
+  }
 }

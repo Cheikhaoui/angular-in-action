@@ -10,7 +10,15 @@ import { ThreadComponent } from './thread/thread.component';
 import { ThreadsComponent } from './threads/threads.component';
 
 import { ForumsService } from './services/forums.service';
+import { RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [{ path: 'forums', component: ForumsComponent },
+{path: 'forums/:forum_alias', component: ForumComponent, children: [{
+    path: '', component: ThreadsComponent
+  }, {
+    path: ':thread_alias', component: ThreadComponent
+  }]
+}]
 @NgModule({
   declarations: [
     ForumComponent,
@@ -23,6 +31,7 @@ import { ForumsService } from './services/forums.service';
     FormsModule,
     HttpModule,
     ClarityModule.forChild(),
+    RouterModule.forChild(routes)
   ],
   providers: [
     ForumsService
